@@ -4,6 +4,10 @@ branding:
   icon: 'cloud'
   color: 'orange'
 inputs:
+  image:
+    description: 'Docker image name'
+    default: docker://public.ecr.aws/l6c8c5q3/codegurusecurity-actions-public:latest
+    required: true
   source_path:
     description: 'Path to source repository'
     default: .
@@ -24,7 +28,7 @@ inputs:
 
 runs:
   using: docker
-  image: docker://public.ecr.aws/l6c8c5q3/codegurusecurity-actions-public:latest
+  image: ${{ inputs.image }}
   args:
     - --source_path
     - ${{ inputs.source_path }}
